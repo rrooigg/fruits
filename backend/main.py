@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-app = FastAPI()
+app = FastAPI(debug=True)
 
 class Fruit(BaseModel):
   name: str
@@ -35,7 +35,7 @@ memory_db = {"fruits": []} # this is a dictionary
 def get_fruits():
   return Fruits(fruits=memory_db["fruits"]) # fetches the fruits list inside the dictionary and wraps it in the Fruits pydantic model then return to user as JSON response
 
-@app.post("/fruits", response_class=Fruit)
+@app.post("/fruits")
 def add_fruit(fruit: Fruit):
   memory_db["fruits"].append(fruit)
   return fruit
