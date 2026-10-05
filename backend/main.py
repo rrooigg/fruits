@@ -14,7 +14,7 @@ class Fruits(BaseModel):
 # allows to send request from frontend to backend
 # web applications able to access this fastapi application
 origins = [
-  "http://localhost:8000",
+  "http://localhost:5173",
 
 ]
 
